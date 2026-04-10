@@ -2,6 +2,7 @@ Flight-Price-Predection
 
 
 
+
 In this I have first described the data to check the statistical value.
 
 Then used pandas,numpy,matplotlib,seaborn to visualize the data.
