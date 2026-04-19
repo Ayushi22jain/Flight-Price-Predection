@@ -1,39 +1,46 @@
 # Flight Price Prediction ✈️
 
-This repository features a machine learning project designed to predict flight ticket prices. The project involves a deep dive into data preprocessing, feature engineering, and ensemble learning to provide accurate price estimations based on historical flight data.
+Predicting flight ticket prices is a classic but challenging problem because prices change dynamically based on time, airline, and route. This project uses Machine Learning to find patterns in historical data and estimate future ticket costs.
 
-## 🚀 Project Workflow
+## 🧐 Problem Statement
+The goal is to build a regression model that can predict the price of a flight based on various factors like the date of journey, duration, source/destination, and the number of stops.
 
-1. **Data Exploration & Visualization**
-    * **Statistical Analysis:** Initial data description to understand distribution and variance.
-    * **Visualization:** Used Matplotlib and Seaborn to identify trends and correlations.
-    * **EDA:** Detailed Exploratory Data Analysis, including converting timestamps into usable features for the model.
+## 🚀 Step-by-Step Workflow
 
-2. **Feature Engineering & Preprocessing**
-    * **Categorical Encoding:** Handled nominal and ordinal data using One-Hot Encoding and Label Encoding.
-    * **Outlier Detection:** Utilized Seaborn plots to identify and manage data anomalies.
-    * **Feature Selection:** Employed multiple techniques to find the most impactful variables, including Heatmaps, Feature Importance scores, and `SelectKBest`.
+### 1. Data Exploration & Cleaning (EDA)
+* **Time Conversion:** Transformed raw 'Date_of_Journey' into separate 'Day' and 'Month' columns so the model can understand seasonal trends.
+* **Duration Extraction:** Converted "2h 50m" format into total minutes to make it a mathematical feature.
+* **Missing Values:** Handled any null entries in the dataset to ensure model stability.
 
-3. **Model Building & Optimization**
-    * **Algorithm:** Fitted the processed data using the **Random Forest Regressor**.
-    * **Tuning:** Performed Hyperparameter Tuning to optimize model performance and reduce error rates.
+### 2. Feature Engineering & Preprocessing
+* **Categorical Encoding:** * **One-Hot Encoding:** Used for nominal data (Airlines, Source) where there is no inherent order.
+    * **Label Encoding:** Used for ordinal data (Total_Stops) where the number of stops has a direct impact on price.
+* **Feature Selection:** Not all data is useful. I used **ExtraTreesRegressor** and **Heatmaps** to visualize which features (like duration or total stops) actually influence the price the most.
+
+### 3. Model Building: Random Forest Regressor
+I chose **Random Forest** because it:
+* Handles non-linear data exceptionally well.
+* Is an ensemble method (combines multiple decision trees) which reduces the risk of overfitting.
+* **Hyperparameter Tuning:** Used `RandomizedSearchCV` to find the best settings for the model (n_estimators, max_depth, etc.) to get the lowest possible error.
 
 ## 🛠️ Tech Stack
-
-* **Language:** Python
-* **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
-* **Tools:** Jupyter Notebook
+* **Language:** Python 3.x
+* **Analysis:** Pandas, NumPy
+* **Visualization:** Matplotlib, Seaborn
+* **ML Framework:** Scikit-learn
+* **Deployment:** Flask (Web API)
 
 ## 📁 Repository Structure
+* `flight_price.ipynb`: The core logic, data cleaning, and training.
+* `app.py`: The Flask backend that serves the model.
+* `home.html`: The user interface where you input flight details.
+* `Data_Train.xlsx`: Historical training data.
 
-* `flight_price.ipynb`: The complete notebook covering data cleaning, EDA, and modeling.
-* `Data_Train.xlsx` / `Test_set.xlsx`: The datasets used for training and validation.
-* `app.py`: Flask application for deployment.
-* `home.html` / `styles.css`: Frontend files for the web interface.
-* `README.md`: Project documentation.
+## ⚙️ How to Setup
+1. **Clone:** `git clone https://github.com/Ayushi22jain/Flight-Price-Predection.git`
+2. **Install:** `pip install pandas scikit-learn seaborn matplotlib flask openpyxl`
+3. **Launch UI:** `python app.py`
 
-## ⚙️ How to Run
-
-1. **Clone this repository:**
-   ```bash
-   git clone [https://github.com/Ayushi22jain/Flight-Price-Predection.git](https://github.com/Ayushi22jain/Flight-Price-Predection.git)
+## 👤 Author
+**Ayushi Jain**
+GitHub: [@Ayushi22jain](https://github.com/Ayushi22jain)
