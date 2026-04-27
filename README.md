@@ -1,5 +1,5 @@
 # Flight Price Prediction ✈️
-  
+     
 Predicting flight ticket prices is a classic but challenging problem because prices change dynamically based on time, airline, and route. This project uses Machine Learning to find patterns in historical data and estimate future ticket costs.
 
 ## 🧐 Problem Statement
